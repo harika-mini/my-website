@@ -1,0 +1,767 @@
+/* --------------------------------------- */
+/* ----- Basic Setup ----- */
+/* --------------------------------------- */
+
+@font-face {
+    font-family: 'Hk Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/HKGrotesk-Regular.woff') format('woff');
+  }
+  
+  @font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/Jost-Regular.ttf') format('woff');
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+  }
+  
+  :root {
+    --font-size-small: 1.8rem;
+    --font-size-normal: 2.2rem;
+    --font-size-medium: 2.8rem;
+    --font-size-medium-1: 3.6rem;
+    --font-size-large: 5.5rem;
+    --font-size-huge: 7.5rem;
+    --font-stack: 'Hk Grotesk', sans-serif;
+  
+    --line-height-normal: 1.7;
+    --line-height-small: 1.2;
+  
+    --black: #000;
+    --pink: #ff3258;
+    --white: #f0e9f2;
+    --white-1: #e5e5e6da;
+  
+    --container-max-width: 1180px;
+    --container-normal-width: 800px;
+    --container-medium-width: 700px;
+    --container-small-width: 500px;
+  
+    --gutter-huge: 12rem;
+    --gutter-medium: 6rem;
+    --gutter-normal: 3rem;
+    --gutter-small-1: 2.5rem;
+    --gutter-small: 2rem;
+  
+    --border-light: 1px solid rgb(36, 35, 35);
+  }
+  
+  html {
+    font-size: 62.5%; /* (16/10)*100 = 62.5% => 1rem = 10px */
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+  
+  @media(max-width: 1000px) {
+    html {
+      font-size: 52%;
+    }
+  }
+  
+  body {
+    font-size: var(--font-size-small);
+    font-family: var(--font-stack);
+    font-weight: 400;
+    color: var(--white-1);
+    line-height: var(--line-height-normal);
+    background: var(--black);
+    overflow-x: hidden;
+  }
+  
+  .row {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+  }
+  
+  @media(max-width: 1340px) {
+    .row {
+      max-width: 1100px;
+    }
+  }
+  
+  @media(max-width: 1240px) {
+    .row {
+      padding: 0 var(--gutter-medium);
+    }
+  }
+  
+  @media(max-width: 600px) {
+    .row {
+      padding: 0 var(--gutter-normal);
+    }
+  }
+  
+  @media(max-width: 600px) {
+    .row {
+      padding: 0 var(--gutter-small);
+    }
+  }
+  
+  section {
+    padding: var(--gutter-huge) 0;
+    border-bottom: var(--border-light);
+  }
+  
+  img {
+    object-fit: contain;
+    max-width: 100%;
+  }
+  
+  /* --------------------------------------- */
+  /* ----- Navigation ----- */
+  /* --------------------------------------- */
+  
+  .nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: var(--gutter-normal) 0;
+  }
+  
+  .nav__items {
+    display: flex;
+    list-style: none;
+  }
+  
+  .nav__item:not(:last-child) {
+    margin-right: var(--gutter-medium);
+  }
+  
+  @media(max-width: 500px) {
+    .nav {
+      justify-content: center;
+    }
+  }
+  
+  @media(max-width: 400px) {
+    .nav__item:not(:last-child) {
+      margin-right: var(--gutter-normal);
+    }
+  }
+  
+  @media(max-width: 300px) {
+    .nav {
+      font-size: var(--font-size-small);
+    }
+  }
+  
+  .nav__link {
+    position: relative;
+    display: inline-block;
+    padding: 1rem 0;
+    text-decoration: none;
+    color: inherit;
+    transition: all .2s;
+  }
+  
+  .nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 100%;
+    display: inline-block;
+    height: 1rem;
+    background: var(--white);
+    transition: all 0.25s cubic-bezier(1, 0.68, 0.16, 0.9);
+  }
+  
+  .nav__link:hover {
+    color: var(--pink);
+  }
+  
+  .nav__link:hover::after {
+    right: 0;
+    height: 2px;
+    background: var(--pink);
+  }
+  
+  /* --------------------------------------- */
+  /* ----- Header ----- */
+  /* --------------------------------------- */
+  
+  .header {
+    background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), 
+        url('./images/header.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-size: var(--font-size-normal);
+  }
+  
+  .header__text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .header__text h1 {
+    font-size: var(--font-size-huge);
+    color: var(--white);
+    margin: 0; /* No margin for header */
+  }
+  
+  .header__text p {
+    margin: 1.5rem 0 3.5rem;
+    max-width: var(--container-medium-width);
+    font-family: 'Jost', sans-serif;
+    font-size: var(--font-size-medium);
+  }
+  
+  @media(max-width: 500px) {
+    .header {
+        text-align: center;
+    }
+  
+    .header__text p {
+        transform: scale(.8);
+    }
+  }
+/* --------------------------------------- */
+/* ----- Headings and Paragraphs ----- */
+/* --------------------------------------- */
+
+h2 {
+    font-size: var(--font-size-large);
+    margin-bottom: var(--gutter-medium);
+    color: var(--white); /* Light color for headings */
+    text-align: left; /* Align to the left */
+    font-weight: bold; /* Bold text */
+    position: relative; /* Position for the underline effect */
+  }
+  
+  h2::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 100%; /* Full width for underline */
+    background: var(--pink); /* Pink underline */
+    margin-top: 5px; /* Space between heading and underline */
+  }
+  
+  .about__text h2 {
+    font-size: var(--font-size-large);
+    color: var(--white);
+    margin-bottom: var(--gutter-medium);
+  }
+  
+/* --------------------------------------- */
+/* ----- Buttons and Links ----- */
+/* --------------------------------------- */
+
+.btn {
+    position: relative;
+    display: inline-block;
+    padding: 1rem 4.2rem;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--pink);
+    font-weight: 400;
+    transition: all 0.2s; /* Ensure transition effect */
+  }
+  
+  .btn:focus {
+    outline: none;
+  }
+  
+  .btn::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 100%;
+    background: var(--white);
+    height: 100%;
+    z-index: -1;
+    transition: all 0.2s cubic-bezier(1, 0.68, 0.16, 0.9);
+  }
+  
+  .btn:hover::after,
+  .btn:focus::after {
+    right: 0;
+    background: var(--pink); /* Change to pink on hover */
+  }
+  
+  .btn--pink {
+    background: var(--pink);
+    transition: all 0.2s;
+  }
+  
+  .btn--pink::after {
+    display: none;
+  }
+  
+  .btn--pink:hover,
+  .btn--pink:focus {
+    background: transparent; /* Transparent on hover */
+  }  
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: #ff3258; /* Pink button */
+  color: white;
+  font-size: 24px;
+  border-radius: 50%;
+  visibility: hidden; /* Initially hidden */
+  opacity: 0; /* Initially hidden */
+  transition: all 0.4s ease; /* Smooth transition for visibility and opacity */
+  z-index: 1000; /* Make sure it stays on top of other elements */
+}
+
+.back-to-top:hover {
+  background-color: #ff647e; /* Slight color change on hover */
+}
+
+/* Make the button visible once scrolled past a certain point */
+.back-to-top.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+  
+  /* --------------------------------------- */
+/* ----- About ----- */
+/* --------------------------------------- */
+
+.about {
+    height: 100vh; /* Make the About section cover the full viewport height */
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    background-color: #1a1a1a; /* Dark background color for contrast */
+    padding: var(--gutter-medium); /* Padding for content */
+  }
+  
+  .about__content {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between text and image */
+    width: 100%; /* Full width */
+  }
+  
+  .about__text {
+    flex: 1; /* Allow text to take available space */
+    padding-right: 20px; /* Add padding to separate from image */
+  }
+  
+  .about__text h2 {
+    font-size: var(--font-size-large);
+    color: var(--white);
+    margin-bottom: var(--gutter-medium); /* Match with header */
+  }
+  
+  .about__text p {
+    margin: var(--gutter-small-1) 0; /* Consistent margin */
+  }
+  
+  .about__photo-container {
+    flex: 0 0 250px; /* Increase the width for the image container */
+    margin-left: 20px; /* Space between text and image */
+  }
+  
+  .about__photo {
+    width: 100%; /* Make the image responsive */
+    height: 250px; /* Set a fixed height to maintain the square aspect ratio */
+    border-radius: 15px; /* Round the corners */
+    object-fit: cover; /* Cover the square area without distortion */
+  }
+  
+  
+  
+  
+  /* --------------------------------------- */
+  /* ----- Experience ----- */
+  /* --------------------------------------- */
+  
+  .experience {
+    background-color: #1a1a1a; /* Darker background for contrast */
+    padding: var(--gutter-huge) 0; /* Add padding for spacing */
+  }
+  
+  .experience h2 {
+    text-align: left; /* Align heading to the left */
+    font-size: var(--font-size-large);
+    color: var(--white); /* Light color for headings */
+    margin-bottom: var(--gutter-medium);
+    font-weight: bold; /* Bold text */
+  }
+  
+  .experience h2::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 100%; /* Full width for underline */
+    background: var(--pink); /* Pink underline */
+    margin-top: 5px; /* Space between heading and underline */
+  }
+  
+  .experience__box {
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Center items vertically */
+    background-color: #2b2b2b; /* Dark grey for individual experience items */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Inner padding */
+    margin: 15px; /* Margin between items */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition effects */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+  }
+  
+  .experience__box:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); /* Stronger shadow on hover */
+  }
+  
+  .experience__content {
+    flex: 1; /* Allow content to take available space */
+  }
+  
+  .experience__box h3 {
+    font-size: var(--font-size-medium-1);
+    color: var(--pink); /* Highlight title with pink color */
+    margin: 0 0 5px 0; /* Space below title */
+  }
+  
+  .experience__box .workplace {
+    color: #cccccc; /* Light grey for text */
+    margin: 5px 0; /* Space between workplace and description */
+  }
+  
+  .experience__box p {
+    color: #cccccc; /* Light grey for text */
+    margin-bottom: 5px; /* Space below description */
+  }
+  
+  /* Logo alignment */
+  .experience__logo {
+    width: 100px; /* Set a fixed width for logos */
+    margin-left: 20px; /* Space between text and logo */
+  }
+  
+  /* Responsive Design */
+  @media(max-width: 900px) {
+    .experience__box {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+      align-items: flex-start; /* Align items to the start */
+    }
+  
+    .experience__logo {
+      margin-left: 0; /* Reset left margin for stacked items */
+      margin-top: 10px; /* Add space above logo */
+    }
+  }
+  
+/* --------------------------------------- */
+/* ----- Projects ----- */
+/* --------------------------------------- */
+
+.projects {
+    padding: var(--gutter-huge) 0; /* Padding for the section */
+    background-color: #1a1a1a; /* Dark background for contrast */
+}
+
+.projects h2 {
+    text-align: left; /* Align heading to the left */
+    font-size: var(--font-size-large);
+    color: var(--white); /* Light color for headings */
+    margin-bottom: var(--gutter-medium);
+    font-weight: bold; /* Bold text */
+}
+
+.projects__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns in a row */
+    gap: var(--gutter-medium); /* Space between items */
+}
+
+.project__item {
+    text-align: justify;
+    background-color: #2b2b2b; /* Dark grey for individual project items */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Inner padding */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: space-between; /* Space between content and button */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition effects */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+
+.project__item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); /* Stronger shadow on hover */
+}
+
+.project__item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #f2f2f2;
+    text-align:left;
+}
+
+.project__item p {
+    color: #cccccc; /* Light grey for text */
+    margin-bottom: 5px; /* Space below description */
+}
+
+.project__item .btn {
+    margin-top: auto; /* Push the button to the bottom */
+}
+
+
+  
+  /* --------------------------------------- */
+  /* ----- Achievements ----- */
+  /* --------------------------------------- */
+  
+
+.achievements {
+    background-color: black; /* Dark background for section */
+    padding: 50px 0;
+  }
+  
+  .achievements h2 {
+    text-align: left; /* Align heading to the left */
+    font-size: var(--font-size-large);
+    color: var(--white); /* Light color for headings */
+    margin-bottom: var(--gutter-medium);
+    font-weight: bold; /* Bold text */
+  }
+  
+  .achievements h2::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 100%; /* Full width for underline */
+    background: var(--pink); /* Pink underline */
+    margin-top: 5px; /* Space between heading and underline */
+  }
+  
+  
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2-column grid */
+    gap: 30px; /* Space between grid items */
+    padding: 0 20px;
+  }
+  
+  /* Achievement Item */
+  .achievement-item {
+    background-color: #2b2b2b; /* Dark grey background */
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Darker shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: space-between; /* Space between content and button */
+    height: 100%; /* Ensure the item occupies full height */
+  }
+  
+  .achievement-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); /* Stronger shadow on hover */
+  }
+  
+  .achievement-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #f2f2f2; /* Light grey for title */
+  }
+  
+  .achievement-item p {
+    font-size: 16px;
+    color: #cccccc; /* Light grey for description */
+    margin-bottom: 15px;
+  }
+  
+  /* View Certificate Button */
+  .view-link {
+    display: inline-block;
+    margin-top: auto; /* Push the button to the bottom */
+    padding: 10px 20px;
+    background-color: #3d3d3d; /* Dark grey button */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .view-link:hover {
+    background-color: #575757; /* Lighter grey on hover */
+    transform: translateY(-2px);
+  }
+  
+  /* --------------------------------------- */
+  /* ----- Hobbies ----- */
+  /* --------------------------------------- */
+.hobbies {
+    padding: var(--gutter-huge) 0;
+  }
+  
+  .hobbies h2 {
+    text-align: left;
+    font-size: var(--font-size-large);
+    color: var(--white);
+    margin-bottom: var(--gutter-medium);
+    font-weight: bold;
+  }
+  
+/* Art & Craft Carousel */
+.hobbies__carousel {
+  position: relative;
+  max-width: 800px; /* Set the width of the carousel */
+  margin: 0 auto;
+  overflow: hidden; /* Hide the images that are not in view */
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Smooth transition */
+  width: calc(100% * 4); /* Adjust for the number of images */
+}
+
+.hobby-image {
+  width: 100%;
+  height: auto; /* Automatically adjust the height based on the image's width */
+  max-height: 450px; /* Limit the max height to prevent zooming */
+  object-fit: cover; /* Ensure that the images maintain their aspect ratio without zooming */
+  border-radius: 8px;
+}
+
+/* Carousel Controls (Arrows) */
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.carousel-control.prev {
+  left: 10px;
+}
+
+.carousel-control.next {
+  right: 10px;
+}
+
+/* Tennis Award Section */
+.hobby__tennis-award {
+  position: relative;
+  text-align: center;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* Highlight Animation */
+.hobby-tennis-image {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  position: relative; /* Position for pseudo-elements */
+  animation: pulse 2s infinite; /* Animation effect */
+}
+
+/* Pulse Effect */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.hobby__tennis-award h3 {
+  font-size: 2rem;
+  color: var(--pink);
+  margin-bottom: 10px;
+}
+
+  
+  
+  /* --------------------------------------- */
+  /* ----- Contact ----- */
+  /* --------------------------------------- */
+  
+  .contact {
+    background-color: #1a1a1a; /* Background color */
+    padding: var(--gutter-huge) 0; /* Add padding */
+  }
+  
+  .contact__info {
+    max-width: var(--container-medium-width);
+    margin: 0 auto; /* Center the contact info */
+  }
+  
+  .contact__info p {
+    color: var(--white);
+    text-align: justify;
+    margin-bottom: var(--gutter-medium);
+  }
+  
+  /* --------------------------------------- */
+  /* ----- Footer ----- */
+  /* --------------------------------------- */
+  
+  .footer {
+    text-align: center;
+    padding: var(--gutter-medium) 0 var(--gutter-normal);
+  }
+  
+  .footer__social-links {
+    display: flex;
+    justify-content: center;
+    padding: var(--gutter-normal) 0;
+    list-style: none;
+  }
+  
+  .footer__social-link-item:not(:last-of-type) {
+    margin-right: var(--gutter-small);
+  }
+  
+  .footer__social-image {
+    height: 4rem;
+  }
+  
+  .footer__github-buttons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer__github-buttons iframe {
+    height: 2.5rem;
+    width: 84px;
+    transform: translateY(3px);
+  }
+  
+  @media(max-width: 500px) {
+    .footer {
+        padding: var(--gutter-medium) 0;
+    } 
+  }
+  
