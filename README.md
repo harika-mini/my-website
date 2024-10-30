@@ -29,13 +29,11 @@ Details of my hands-on experiences.
 Highlights of accomplishments and awards.
 ### Contact: 
 Direct ways to connect with me for collaboration or opportunities.
+
 ## 🛠️ Technologies Used
 ### Frontend: 
 HTML, CSS, JavaScript
-### Backend/Database: 
-Python, MySQL
-### Additional Tools: 
-GitHub, AWS
+
 ## 📸 Media
 ### Hobbies: 
 Gallery showcasing my interests in painting, craft, and tennis.
